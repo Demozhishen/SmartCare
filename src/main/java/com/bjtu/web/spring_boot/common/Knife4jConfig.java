@@ -19,8 +19,8 @@ public class Knife4jConfig {
     public Docket docket() {
         Docket docket = new Docket(DocumentationType.OAS_30)
                 .apiInfo(new ApiInfoBuilder()
-                        .title("物流管理系统api文档")
-                        .description("对物流管理系统接口进行测试")
+                        .title("智慧养老系统api文档")
+                        .description("对智慧养老管理系统接口进行测试")
                         // .termsOfServiceUrl("http://www.xx.com/")
                         .contact(new Contact("JuBao Cheng", "http://localhost:8080/login", "1448527427@qq.com"))
                         .version("1.0")

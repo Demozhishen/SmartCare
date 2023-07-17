@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
-@TableName("event_info")
+@TableName("event")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

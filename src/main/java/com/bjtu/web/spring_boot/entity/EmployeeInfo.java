@@ -51,7 +51,9 @@ public class EmployeeInfo {
     @TableField("hire_date")
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private LocalDateTime  hireDate;
-
+    @ApiModelProperty(value = "标识")
+    @TableField("flag")
+    private Integer flag;
     @ApiModelProperty(value = "离职日期")
     @TableField("resign_date")
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")

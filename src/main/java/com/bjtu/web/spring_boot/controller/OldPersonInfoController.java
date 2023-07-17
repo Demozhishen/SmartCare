@@ -24,7 +24,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/older")
-public class OldPersonInfoController {
+public class OldPersonInfoController extends SysUserController {
     @Resource
    OldPersonInfoMapper oldPersonInfoMapper;
 

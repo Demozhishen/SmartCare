@@ -5,21 +5,28 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import com.bjtu.web.spring_boot.common.Result;
+import com.bjtu.web.spring_boot.entity.VolunteerInfo;
+import com.bjtu.web.spring_boot.mapper.EmployeeInfoMapper;
+import com.bjtu.web.spring_boot.mapper.OldPersonInfoMapper;
+import com.bjtu.web.spring_boot.mapper.SysUserMapper;
+import com.bjtu.web.spring_boot.mapper.VolunteerInfoMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/file")
 @RestController
 @CrossOrigin
-public class FileController {
+public class FileController extends EmployeeInfoController {
 
     @Value("${server.port}")
     private String port;
@@ -60,6 +67,38 @@ public class FileController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    @Resource
+    EmployeeInfoMapper employeeInfoMapper;
+
+    @Resource
+    OldPersonInfoMapper oldPersonInfoMapper;
+
+    @Resource
+    VolunteerInfoMapper volunteerInfoMapper;
+
+    @Resource
+    SysUserMapper sysUserMapper;
+    @GetMapping("/echart")
+    public Result<?> getEchart(){
+        int employee = employeeInfoMapper.selectList(null).size();
+        int old = oldPersonInfoMapper.selectList(null).size();
+
+        int volunter = volunteerInfoMapper.selectList(null).size();
+        int sys = sysUserMapper.selectList(null).size();
+
+        List<Integer> sum = new ArrayList<Integer>();
+        sum.add(employee);
+        sum.add(old);
+        sum.add(volunter);
+        sum.add(sys);
+
+
+
+
+        return Result.success(sum);
 
     }
 }

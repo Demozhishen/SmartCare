@@ -104,6 +104,13 @@ public class OldPersonInfo {
     @TableField("DESCRIPTION")
     private String description;
 
+    @ApiModelProperty(value = "年龄")
+    @TableField("age")
+    private Integer age;
+    @ApiModelProperty(value = "标识")
+    @TableField("flag")
+    private Integer flag;
+
     @ApiModelProperty(value = "是否激活")
     @TableField("ISACTIVE")
     private String isActive;
